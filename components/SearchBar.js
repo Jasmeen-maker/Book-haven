@@ -24,7 +24,7 @@ export default function SearchBar({ defaultValue = "" }) {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full text-sm font-medium transition">
+      <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-full text-sm font-medium transition">
         Search
       </button>
     </form>

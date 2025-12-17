@@ -12,12 +12,16 @@ export default function RootLayout({ children }) {
       <body>
         <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
           <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <Link href="/" className="text-2xl font-extrabold text-blue-700">
+            <Link
+              href="/"
+              className="text-2xl font-extrabold text-emerald-600"
+            >
               📚 Book Haven
             </Link>
+
             <Link
               href="/books"
-              className="text-sm font-medium text-gray-700 hover:text-blue-700 transition"
+              className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition"
             >
               Browse
             </Link>

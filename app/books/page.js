@@ -32,12 +32,13 @@ export default function BooksPage() {
     <div className="space-y-8">
       <div className="bg-white rounded-xl shadow p-6">
         <h1 className="text-2xl font-bold mb-4">
-          Results for <span className="text-blue-700">{query}</span>
+          Results for{" "}
+          <span className="text-emerald-600">{query}</span>
         </h1>
         <SearchBar defaultValue={query} />
       </div>
 
-      {loading && <p className="text-gray-600">Loading books...</p>}
+      {loading && <p className="text-gray-600">Loading books…</p>}
 
       {!loading && books.length === 0 && (
         <p className="text-gray-600">No books found.</p>

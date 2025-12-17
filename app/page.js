@@ -24,7 +24,7 @@ export default function HomePage() {
               <a
                 key={q}
                 href={`/books?q=${encodeURIComponent(q)}`}
-                className="px-4 py-2 rounded-full bg-white shadow hover:bg-blue-50 hover:text-blue-700 transition text-sm"
+                className="px-4 py-2 rounded-full bg-white shadow hover:bg-emerald-50 hover:text-emerald-700 transition text-sm"
               >
                 {q}
               </a>
