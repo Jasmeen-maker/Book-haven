@@ -3,24 +3,22 @@
 import Link from "next/link";
 
 export default function BookCard({ item }) {
-  const book = item?.volumeInfo || {};
-  const id = item?.id;
+  const info = item?.volumeInfo || {};
+  const thumb = info.imageLinks?.thumbnail || "/no-book.png";
 
   return (
-    <Link href={`/books/${id}`} className="block">
-      <div className="border rounded p-4 shadow hover:shadow-lg transition">
+    <Link href={`/books/${item.id}`} className="block">
+      <div className="bg-white rounded-lg shadow hover:shadow-md transition p-4 h-full">
         <img
-          src={book.imageLinks?.thumbnail || "/no-book.png"}
-          alt={book.title || "No title"}
-          className="w-full h-48 object-cover mb-2"
+          src={thumb}
+          alt={info.title || "Book cover"}
+          className="w-full h-56 object-cover rounded mb-3"
         />
-        <h2 className="font-bold text-lg">{book.title || "No title"}</h2>
-        <p className="text-gray-600 text-sm">
-          {book.authors?.join(", ") || "Unknown Author"}
+        <h2 className="font-semibold text-lg line-clamp-2">{info.title || "Untitled"}</h2>
+        <p className="text-sm text-gray-600 mt-1 line-clamp-1">
+          {info.authors?.join(", ") || "Unknown Author"}
         </p>
-        <p className="text-gray-500 text-sm">
-          {book.publishedDate || "No publication date"}
-        </p>
+        <p className="text-xs text-gray-500 mt-1">{info.publishedDate || "N/A"}</p>
       </div>
     </Link>
   );
