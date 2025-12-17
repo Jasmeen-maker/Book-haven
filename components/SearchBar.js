@@ -1,35 +1,27 @@
 "use client";
-
-import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function SearchBar() {
   const [query, setQuery] = useState("");
   const router = useRouter();
 
-  const handleSubmit = (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
-
-    console.log("Searching for:", query); // DEBUG
-
-    if (!query.trim()) return;
-
+    if (!query) return;
     router.push(`/books?q=${encodeURIComponent(query)}`);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2">
+    <form onSubmit={handleSearch} className="flex gap-2">
       <input
         type="text"
-        placeholder="Search books..."
-        className="border p-2 w-full"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        placeholder="Search books..."
+        className="border p-2 rounded flex-1"
       />
-      <button
-        type="submit"
-        className="bg-blue-600 text-white px-4"
-      >
+      <button type="submit" className="bg-blue-600 text-white px-4 rounded">
         Search
       </button>
     </form>
