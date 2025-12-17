@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -18,7 +19,7 @@ export default function SearchBar() {
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search books..."
+        placeholder="Search for a book..."
         className="border p-2 rounded flex-1"
       />
       <button type="submit" className="bg-blue-600 text-white px-4 rounded">
