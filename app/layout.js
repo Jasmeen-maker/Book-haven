@@ -1,5 +1,7 @@
 import "./globals.css";
 import Link from "next/link";
+import { AuthProvider } from "../context/lib/AuthContext";
+
 
 export const metadata = {
   title: "Book Haven",
