@@ -1,3 +1,6 @@
+// app/book/[id]/page.js
+export const dynamic = "force-dynamic"; // Fetch data at request time
+
 async function getBook(id) {
   const res = await fetch(
     `https://www.googleapis.com/books/v1/volumes/${id}`,
@@ -11,8 +14,8 @@ export default async function BookDetails({ params }) {
   const info = book.volumeInfo;
 
   return (
-    <div className="bg-white p-6 rounded shadow">
-      <div className="flex gap-6">
+    <div className="bg-white p-6 rounded shadow m-6">
+      <div className="flex flex-col md:flex-row gap-6">
         <img
           src={info.imageLinks?.thumbnail || "/no-book.png"}
           alt={info.title}
