@@ -9,23 +9,28 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-gray-50 text-gray-900">
-        <header className="border-b bg-white">
-          <div className="mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
-            <Link href="/" className="font-bold text-xl">
-              Book Haven
+      <body>
+        <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
+          <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <Link href="/" className="text-2xl font-extrabold text-blue-700">
+              📚 Book Haven
             </Link>
-            <Link href="/books" className="text-sm text-blue-700 hover:underline">
-              Browse / Search
+            <Link
+              href="/books"
+              className="text-sm font-medium text-gray-700 hover:text-blue-700 transition"
+            >
+              Browse
             </Link>
           </div>
         </header>
 
-        <main className="mx-auto max-w-5xl px-4 py-8">{children}</main>
+        <main className="max-w-6xl mx-auto px-4 py-10">
+          {children}
+        </main>
 
-        <footer className="border-t bg-white mt-10">
-          <div className="mx-auto max-w-5xl px-4 py-6 text-sm text-gray-500">
-            Built with Next.js + Google Books API
+        <footer className="border-t bg-white mt-16">
+          <div className="max-w-6xl mx-auto px-4 py-6 text-center text-sm text-gray-500">
+            © {new Date().getFullYear()} Book Haven · Google Books API
           </div>
         </footer>
       </body>

@@ -5,55 +5,35 @@ import BookCard from "./BookCard";
 
 export default function MoreLikeThis({ author, category }) {
   const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  // Prefer category, fallback to author
-  const query =
-    category ? `subject:${category}` : author ? `inauthor:${author}` : "";
 
   useEffect(() => {
+    const query = category
+      ? `subject:${category}`
+      : author
+      ? `inauthor:${author}`
+      : null;
+
     if (!query) return;
 
-    let cancelled = false;
-
-    async function run() {
-      setLoading(true);
-      try {
-        const res = await fetch(
-          `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&maxResults=9`
-        );
-        const data = await res.json();
-        if (!cancelled) setItems(Array.isArray(data.items) ? data.items : []);
-      } catch {
-        if (!cancelled) setItems([]);
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
+    async function fetchMore() {
+      const res = await fetch(
+        `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&maxResults=6`
+      );
+      const data = await res.json();
+      setItems(data.items || []);
     }
 
-    run();
-    return () => {
-      cancelled = true;
-    };
-  }, [query]);
+    fetchMore();
+  }, [author, category]);
 
-  if (!query) return null;
+  if (items.length === 0) return null;
 
   return (
-    <div className="space-y-3">
-      <h2 className="text-xl font-bold">
-        More like this {category ? `(Category: ${category})` : author ? `(Author: ${author})` : ""}
-      </h2>
-
-      {loading && <p className="text-gray-600">Loading related books…</p>}
-
-      {!loading && items.length === 0 && (
-        <p className="text-gray-600">No related books found.</p>
-      )}
-
+    <div>
+      <h2 className="text-xl font-bold mb-4">More like this</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {items.map((it) => (
-          <BookCard key={it.id} item={it} />
+        {items.map((item) => (
+          <BookCard key={item.id} item={item} />
         ))}
       </div>
     </div>
