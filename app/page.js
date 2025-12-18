@@ -3,7 +3,7 @@
 import { useAuth } from "./context/AuthContext";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import SearchBar from "@/app/components/SearchBar";
+import SearchBar from "@/components/SearchBar";
 
 export default function HomePage() {
   const { user } = useAuth();

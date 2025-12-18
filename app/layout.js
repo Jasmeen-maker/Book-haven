@@ -1,7 +1,7 @@
 import "./globals.css";
 import Link from "next/link";
 import { AuthProvider } from "./context/AuthContext";
-import AuthButton from "./components/AuthButton";
+import AuthButton from "@/components/AuthButton";
 
 
 export const metadata = {
